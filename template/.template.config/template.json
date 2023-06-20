@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Onur Kapcik",
+    "classifications": ["API"],
+    "identity": "SupremeDotnetAPI",
+    "name": "Supreme API Template",
+    "shortName": "supremeapi",
+    "sourceName": "Supreme",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "preferNameDirectory": true,
+    "symbols": {
+        "framework":{
+            "type": "parameter",
+            "description": "The target framework for the project",
+            "datatype": "choice",
+            "choices": [
+                { "choice": "net7.0" }
+            ],
+            "defaultValue": "net7.0",
+            "replaces": "{TargetFramework}"
+        },
+        "enable-outbox-pattern":{
+            "type": "parameter",
+            "description": "Enables outbox pattern with CAP.",
+            "datatype": "bool",
+            "defaultValue": "false"
+        },
+        "enable-open-telemetry":{
+            "type": "parameter",
+            "description": "Enables OpenTelemetry with Jaeger support.",
+            "datatype": "bool",
+            "defaultValue": "false"
+        },
+        "enable-rate-limiting": {
+            "type": "parameter",
+            "description": "Enables basic rate limiting functionalities with Redis.",
+            "datatype": "bool",
+            "defaultValue": "false"
+        }
+    },
+    "sources": [
+        {
+            "modifiers": [
+                {
+                    "condition": "(!enable-outbox-pattern)",
+                    "exclude": [
+                        "**/*.Api/Consumers/FooIntegrationEventConsumer.cs",
+                        "**/*.Api/Consumers/FooDelayedIntegrationEventConsumer.cs",
+                        
+                        "**/*.Domain/IntegrationEvents/FooIntegrationEvent.cs",
+                        "**/*.Domain/IntegrationEvents/FooDelayedIntegrationEvent.cs",
+                        "**/*.Domain/Outbox/IOutboxClient.cs",
+                        "**/*.Domain/Outbox/IOutboxDelayedMessage.cs",
+                        "**/*.Domain/Outbox/IOutboxMessage.cs",
+                        "**/*.Domain/Outbox/IOutboxTransaction.cs",
+                        "**/*.Domain/Outbox/ITransactionalRequest.cs",
+
+                        "**/*.Infrastructure/Outbox/CapExtraConfiguration.cs",
+                        "**/*.Infrastructure/Outbox/OutboxClient.cs",
+                        "**/*.Infrastructure/Outbox/OutboxTransaction.cs",
+                        "**/*.Infrastructure/Outbox/OutboxInjections.cs",
+                        "**/*.Infrastructure/PipelineBehaviors/TransactionalRequestPipelineBehavior.cs"
+                    ]
+                },
+                {
+                    "condition": "(!enable-open-telemetry)",
+                    "exclude": [
+                        "**/*.Domain/Settings/JaegerSettings.cs"
+                    ]
+                },
+                {
+                    "condition": "(!enable-rate-limiting)",
+                    "exclude": [
+                        "**/*.Api/Filters/RateLimits/FixedWindowRateLimitFilterAttribute.cs",
+                        "**/*.Api/Filters/RateLimits/ConcurrentRateLimitFilterAttribute.cs",
+                        "**/*.Api/Filters/RateLimits/SlidingWindowRateLimitFilterAttribute.cs",
+                        "**/*.Api/Filters/RateLimits/TokenBucketRateLimitFilterAttribute.cs",
+
+                        "**/*.Infrastructure/RateLimiting/Core/IRateLimit.cs",
+                        "**/*.Infrastructure/RateLimiting/Core/RateLimitOptions.cs",
+                        "**/*.Infrastructure/RateLimiting/Core/RateLimitState.cs",
+                        "**/*.Infrastructure/RateLimiting/Core/RateLimitTypes.cs",
+                        "**/*.Infrastructure/RateLimiting/FixedWindowRateLimit.cs",
+                        "**/*.Infrastructure/RateLimiting/ConcurrentRateLimit.cs",
+                        "**/*.Infrastructure/RateLimiting/SlidingWindowRateLimit.cs",
+                        "**/*.Infrastructure/RateLimiting/RateLimitingInjections.cs",
+                        "**/*.Infrastructure/RateLimiting/TokenBucketRateLimit.cs"
+                    ]
+                }
+            ]
+        }
+    ]
+}
