@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.5</PackageVersion>
     <PackageId>Supreme.Dotnet.Api.Template</PackageId>
     <Title>Supreme API Template</Title>
     <Authors>Onur Kapçık</Authors>
@@ -18,11 +18,19 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NoDefaultExcludes>true</NoDefaultExcludes>
+    <Copyright>Copyright (c) Onur Kapçık 2023.</Copyright>
+    <PackageProjectUrl>https://github.com/kapozade/dotnet-api-template</PackageProjectUrl>
+    <PackageIcon>bricks.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+    <None Include="images\bricks.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
