@@ -1,4 +1,4 @@
-# supreme-dotnet-api-template
+# dotnet-api-template
 
 ## How-to
 
@@ -14,7 +14,7 @@ The first option is cloning the source code and then run the statements below.
 
 The second option is installing the template and run
 ```bash
-> dotnet new install Supreme.Dotnet.Api.Template
+> dotnet new install Supreme.Dotnet.Api.Template::1.0.2
 > ## dotnet new supremeapi [options] [template options]
 > dotnet new supremeapi -o "MyService" -eop -eot -erl
 ```

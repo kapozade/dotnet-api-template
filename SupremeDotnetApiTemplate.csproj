@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0.2</PackageVersion>
+    <PackageVersion>1.0.3</PackageVersion>
     <PackageId>Supreme.Dotnet.Api.Template</PackageId>
     <Title>Supreme API Template</Title>
     <Authors>Onur Kapçık</Authors>
     <Description>Template to use when creating a .NET API</Description>
-    <PackageTags>dotnet-new;templates;supreme-dotnet-api-template</PackageTags>
+    <PackageTags>dotnet-new;templates;dotnet-api-template</PackageTags>
     <TargetFramework>netstandard2.1</TargetFramework>
 
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
-    <RepositoryUrl>https://github.com/kapozade/supreme-dotnet-api-template</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kapozade/dotnet-api-template</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
