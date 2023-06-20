@@ -1,6 +1,6 @@
 {
     "$schema": "http://json.schemastore.org/template",
-    "author": "Onur Kapcik",
+    "author": "Onur Kapçık",
     "classifications": ["API"],
     "identity": "SupremeDotnetAPI",
     "name": "Supreme API Template",
