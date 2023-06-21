@@ -1,5 +1,17 @@
 # dotnet-api-template
 
+## Requirements
+The basic template depends on the below resources.
+
+* MySQL
+* Redis
+
+If you would like to add outbox pattern functionality, you are required to have 
+
+* RabbitMQ
+
+You can find the docker images for the above resources via [here](https://github.com/kapozade/dockerfiles)
+
 ## How-to
 
 To install the template you have two options 
