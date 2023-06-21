@@ -14,22 +14,12 @@ You can find the docker images for the above resources via [here](https://github
 
 ## How-to
 
-To install the template you have two options 
-
-
-The first option is cloning the source code and then run the statements below.
-
-```bash
-> cd template
-> dotnet new install .
-```
-
-The second option is installing the template and run
+Install the template
 ```bash
 > dotnet new install Supreme.Dotnet.Api.Template
 ```
 
-To run
+Run
 ```bash
 > ## dotnet new supremeapi [options] [template options]
 > dotnet new supremeapi -o "MyService" -eop -eot -erl
