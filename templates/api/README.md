@@ -1,9 +1,15 @@
 # Supreme
 
-## How to run
+## Requirements
 
-If you choose to generate database by DDLs manually, you can skip Step 1 and Step 2.
+* <b>Docker</b>
+
 <br/>
+
+## How-to
+
+If you decide to generate database by DDLs manually, you can skip Step 1 and Step 2.
+
 <br/>
 
 <b>Step 1: Building the project</b>
@@ -12,14 +18,16 @@ If you choose to generate database by DDLs manually, you can skip Step 1 and Ste
 dotnet build Supreme.sln -c Release
 ```
 <br/>
-<b>Step 2: Executing EFCore migrations</b>
 
-This process requires a database up and running and db schema.
+<b>Step 2: Executing EFCore Migrations & Database Update</b>
 
-<i>Note: Before running the below commands, be aware that those commands require dotnet-ef that should have already been installed globally. <br/>
+This process requires a up & running database and db schema. The `docker compose` statement below will handle this.
 
-To install run the command => ```dotnet tool install --global dotnet-ef``` </i>
+<i>Note: Before running the below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
 
+To install globally run the command => ```dotnet tool install --global dotnet-ef``` </i>
+
+<br/>
 
 ```bash
 docker compose up -d mysql
@@ -27,11 +35,14 @@ docker compose up -d mysql
 
 <br/>
 
-Change directory to Infrastructure project. And then run migration generation and db update.
+Change directory to Supreme.Infrastructure project folder. You should wait a few seconds until the database is up & running before running the commands below. Having up & running database, you can run below migration generation and db update statements on your CLI.
+
 
 ```bash
 cd src/Supreme.Infrastructure
+
 dotnet ef migrations add InitialCreate -s "../Supreme.Api/" -o "Db/Migrations/"
+
 dotnet ef database update -s "../Supreme.Api"
 ```
 
@@ -39,10 +50,11 @@ dotnet ef database update -s "../Supreme.Api"
 <b>Step 3: Building docker image</b>
 
 <br/>
-Go back to the solution folder
+Go back to the solution folder before running below command.
+
+<br/>
 
 ```bash
-cd ../../
 docker build \
   --rm=false --file "./container/Dockerfile.app" -t app/supreme .
 ```
@@ -51,7 +63,8 @@ docker build \
 <b>Step 4: Run dependencies and application</b>
 
 <br/>
-Run dependencies individually.
+Run below statements one by one.
+Before running the app, make sure that all dependencies are up & running.
 
 ```bash
 docker compose up -d rabbitmq # If you didn't enable outbox pattern, you can skip this command.
