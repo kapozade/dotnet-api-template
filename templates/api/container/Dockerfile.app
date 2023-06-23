@@ -44,11 +44,12 @@ ENV REDIS_PORT=6379
 ENV REDIS_DBID=1
 ENV REDIS_USER=kapozade
 ENV REDIS_PASSWORD=7b0evpiTayUA9kw0VYLRyWzc0mxPChtU
-ENV JAEGER_HOST=http://localhost:4317
+ENV JAEGER_HOST=http://jaeger:4317
 ENV ASPNETCORE_URLS=http://*:5000
 
 RUN envsubst < /app/appsettings.json.tmpl > /app/appsettings.json
 
 EXPOSE 5000
+EXPOSE 4317
 
 ENTRYPOINT ["dotnet", "Supreme.Api.dll"]

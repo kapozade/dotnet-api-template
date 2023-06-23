@@ -23,6 +23,13 @@ To install run the command => ```dotnet tool install --global dotnet-ef``` </i>
 
 ```bash
 docker compose up -d mysql
+````
+
+<br/>
+
+Change directory to Infrastructure project. And then run migration generation and db update.
+
+```bash
 cd src/Supreme.Infrastructure
 dotnet ef migrations add InitialCreate -s "../Supreme.Api/" -o "Db/Migrations/"
 dotnet ef database update -s "../Supreme.Api"
@@ -35,6 +42,7 @@ dotnet ef database update -s "../Supreme.Api"
 Go back to the solution folder
 
 ```bash
+cd ../../
 docker build \
   --rm=false --file "./container/Dockerfile.app" -t app/supreme .
 ```
@@ -46,6 +54,8 @@ docker build \
 Run dependencies individually.
 
 ```bash
+docker compose up -d rabbitmq # If you didn't enable outbox pattern, you can skip this command.
+docker compose up -d jaeger # If you didn't enable open telemetry, you can skip this command.
 docker compose up -d mysql # Skip this if you already run this for Step #2.
 docker compose up -d redis
 docker compose up -d app
