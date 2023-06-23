@@ -22,7 +22,7 @@ Install the template
 Run
 ```bash
 > ## dotnet new supremeapi [options] [template options]
-> dotnet new supremeapi -o "MyService" -eop -eot -erl
+> dotnet new supremeapi -n "MyService" -eop -eot -erl
 ```
 
 PS: If you choose the option 1, then before running, you might consider to change the directory.

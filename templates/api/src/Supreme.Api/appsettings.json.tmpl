@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DatabaseConnection": "Server=localhost;database=Supreme;uid=root;pwd=root;Convert Zero Datetime=True;Connection Timeout=15;"
+    "DatabaseConnection": "Server=$DB_SERVER;database=$DB_NAME;uid=$DB_USER;pwd=$DB_PASSWORD;Convert Zero Datetime=True;Connection Timeout=$DB_CONNECTION_TIMEOUT;"
   },
   "Serilog": {
     "MinimumLevel": "Information",
@@ -25,22 +25,22 @@
     ]
   },
   "RabbitMqSettings": {
-    "Host": "localhost",
-    "Port": 5672,
-    "VirtualHost": "/",
-    "Username": "guest",
-    "Password": "guest"
+    "Host": "$RABBITMQ_HOST",
+    "Port": $RABBITMQ_PORT,
+    "VirtualHost": "$RABBITMQ_VHOST",
+    "Username": "$RABBITMQ_USERNAME",
+    "Password": "$RABBITMQ_PASSWORD",
   },
   "ApplicationSettings": {
   },
   "RedisSettings": {
-    "Host": "localhost",
-    "Port": 6379,
-    "DbId": 1,
-    "User": "User",
-    "Password": "Password"
+    "Host": "$REDIS_HOST",
+    "Port": $REDIS_PORT,
+    "DbId": $REDIS_DBID,
+    "User": "$REDIS_USER",
+    "Password": "$REDIS_PASSWORD",
   },
   "JaegerSettings": {
-    "Url": "http://localhost:4317"
+    "Url": "$JAEGER_HOST",
   }
 }
