@@ -30,13 +30,13 @@ Executing migrations and db update requires a working database. You can create a
 docker compose up -d mysql
 ````
 
-<i>Note: Before running the below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
+<i>Note: Before running below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
 
-To install globally run the command => ```dotnet tool install --global dotnet-ef``` </i>
+To install globally run this command => ```dotnet tool install --global dotnet-ef``` </i>
 
 <br/>
 
-Change directory to Supreme.Infrastructure project folder. You should wait a few seconds until the database is up & running before running the commands below. Having up & running database, you can run below migration generation and db update statements on your CLI.
+Change directory to Supreme.Infrastructure project folder. You should wait a few seconds until the database is up & running before running commands below. Having up & running database, you can run below migration generation and db update statements on your CLI.
 
 
 ```bash
@@ -51,7 +51,7 @@ dotnet ef database update -s "../Supreme.Api"
 <b>Step 3: Building docker image</b>
 
 <br/>
-<b>Go back to the solution folder before running the below command.</b>
+<b>Go back to the solution folder before running below command.</b>
 
 <br/>
 

@@ -8,21 +8,21 @@
 5. [Contributors](https://github.com/kapozade/dotnet-api-template#contributors)
 
 <br/>
-The generated project implements the Layered Architecture. Internal implementation uses CQRS principle to split query use cases from command use cases. 
+The generated project implements Layered Architecture. Internal implementation uses CQRS principle to split query use cases from command use cases. 
 
 ```
-Supreme.Api: Responsible for showing information to the user and interpreting the user's commands.
-Supreme.Application: Defines the jobs that the project is supposed to do and directs the expressive domain objects to work.
-Supreme.Domain: Responsible for representing concepts of the business, information about the the business situation and business rules.
-Supreme.Infrastructure: Provides generic technical capabilities that support the higher layers.
+Supreme.Api: Responsible for showing information to user and interpreting user's commands.
+Supreme.Application: Defines the jobs that project is supposed to do and directs expressive domain objects to work.
+Supreme.Domain: Responsible for representing concepts of business, information about business situation and business rules.
+Supreme.Infrastructure: Provides generic technical capabilities that support higher layers.
 ```
-<i>PS: When you name your project Supreme will be replaced with the name of the project.</i>
+<i>PS: When you name your project Supreme will be replaced with the name of project.</i>
 
 <br/>
 
 * DomainEvents, IntegrationEvents and outbox messaging can be used so as to have eventual consistency and strong consistency (requires enabled outbox pattern. Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
-* You can add distributed rate limiting per endpoints. If you enable rate limiting, you can find rate limit types under Supreme.Api/Filters/RateLimits folder. Concurrent, Fixed Window, Sliding Window, Token Bucket rate limits are implemented. Currently, adding requests to the queue when the limit has been reached not supported.
+* You can add distributed rate limiting per endpoints. If you enable rate limiting, you can find rate limit types under Supreme.Api/Filters/RateLimits folder. Concurrent, Fixed Window, Sliding Window, Token Bucket rate limits are implemented. Currently, adding requests to queue when limit has been reached not supported.
 ```C#
 [FixedWindowRateLimitFilter(policyKey: "foo", limit: 5, expireInSeconds: 60)]
 [HttpGet("{id}", Name = "GetIndividualFoo")]
@@ -43,7 +43,7 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 <br/>
 
 ## Requirements
-The basic template depends on the below resources.
+The basic template depends on below resources.
 
 * .NET7
 * MySQL
@@ -53,13 +53,13 @@ If you would like to add outbox pattern functionality, you are required to have
 
 * RabbitMQ
 
-You can find the docker images for the above resources via [here](https://github.com/kapozade/dockerfiles)
+You can find docker images for above resources via [here](https://github.com/kapozade/dockerfiles)
 
 <br/>
 
 ## How-to
 
-First, install the template
+First, install template
 ```bash
 dotnet new install Supreme.Dotnet.Api.Template
 ```
@@ -78,7 +78,7 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 | Option | Description |
 | ------ | ----------- |
 | -f, --framework | Currently net7.0 is supported. The default value is net7.0 |
-| -eop, --enable-outbox-pattern | Enables the outbox pattern by using [CAP](https://cap.dotnetcore.xyz/) |
+| -eop, --enable-outbox-pattern | Enables outbox pattern by using [CAP](https://cap.dotnetcore.xyz/) |
 | -eot, --enable-open-telemetry | Adds open telemetry configuration with Jaeger support |
 | -erl, --enable-rate-limiting | Adds basic rate limiting action filters that uses Redis behind |
 
