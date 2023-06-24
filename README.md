@@ -1,5 +1,13 @@
 # dotnet-api-template
 
+## Content
+1. [Requirements](https://github.com/kapozade/dotnet-api-template#requirements)
+2. [How-to](https://github.com/kapozade/dotnet-api-template#how-to)
+3. [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)
+4. [Version History](https://github.com/kapozade/dotnet-api-template#version-history)
+5. [Contributors](https://github.com/kapozade/dotnet-api-template#contributors)
+
+<br/>
 The generated project implements the Layered Architecture. Internal implementation uses CQRS principle to split query use cases from command use cases. 
 
 ```
@@ -15,7 +23,6 @@ Supreme.Infrastructure: Provides generic technical capabilities that support the
 * DomainEvents, IntegrationEvents and outbox messaging can be used so as to have eventual consistency and strong consistency (requires enabled outbox pattern. Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
 * You can add distributed rate limiting per endpoints. If you enable rate limiting, you can find rate limit types under Supreme.Api/Filters/RateLimits folder. Concurrent, Fixed Window, Sliding Window, Token Bucket rate limits are implemented. Currently, adding requests to the queue when the limit has been reached not supported.
-
 ```C#
 [FixedWindowRateLimitFilter(policyKey: "foo", limit: 5, expireInSeconds: 60)]
 [HttpGet("{id}", Name = "GetIndividualFoo")]
@@ -32,15 +39,6 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 ```
 
 * You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
-
-<br/>
-
-## Content
-1. [Requirements](https://github.com/kapozade/dotnet-api-template#requirements)
-2. [How-to](https://github.com/kapozade/dotnet-api-template#how-to)
-3. [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)
-4. [Version History](https://github.com/kapozade/dotnet-api-template#version-history)
-5. [Contributors](https://github.com/kapozade/dotnet-api-template#contributors)
 
 <br/>
 
@@ -87,8 +85,6 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 <br/>
 
 ## Version History
-<br/>
-
 * <b>1.1.0</b>
 
     <b> 🎉 What is new?</b>
