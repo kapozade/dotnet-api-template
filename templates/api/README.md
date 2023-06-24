@@ -3,9 +3,9 @@
 ## Requirements
 
 * <b>.NET7</b>
+* <b>Redis</b>
+* <b>MySQL</b>
 * <b>Docker</b>
-
-<br/>
 
 ## How-to
 
