@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+  app:
+    image: app/supreme
+    container_name: supreme
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=sqlsa
+      - MYSQL_PASSWORD=SuperPass1
+      - MYSQL_DATABASE=Supreme
+
+  redis:
+    image: redis
+    container_name: redis
+    command: >
+      redis-server 
+        --include /usr/local/etc/redis/redis.conf 
+        --save 120 1 
+        --loglevel warning 
+        --appendonly yes 
+        --maxmemory 256mb 
+        --maxmemory-policy allkeys-lru
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+      - ./users.acl:/etc/redis/users.acl
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: heidiks/rabbitmq-delayed-message-exchange
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "9411:9411"
+      - "4317:4317" # Communication via application.
+      - "16686:16686"
+      - "14268:14268"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
