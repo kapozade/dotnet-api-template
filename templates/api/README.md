@@ -2,6 +2,7 @@
 
 ## Requirements
 
+* <b>.NET7</b>
 * <b>Docker</b>
 
 <br/>
@@ -21,17 +22,17 @@ dotnet build Supreme.sln -c Release
 
 <b>Step 2: Executing EFCore Migrations & Database Update</b>
 
-This process requires a up & running database and db schema. The `docker compose` statement below will handle this.
-
-<i>Note: Before running the below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
-
-To install globally run the command => ```dotnet tool install --global dotnet-ef``` </i>
+Executing migrations and db update requires a working database. You can create a db instance by executing below command.
 
 <br/>
 
 ```bash
 docker compose up -d mysql
 ````
+
+<i>Note: Before running the below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
+
+To install globally run the command => ```dotnet tool install --global dotnet-ef``` </i>
 
 <br/>
 
@@ -50,7 +51,7 @@ dotnet ef database update -s "../Supreme.Api"
 <b>Step 3: Building docker image</b>
 
 <br/>
-Go back to the solution folder before running below command.
+<b>Go back to the solution folder before running the below command.</b>
 
 <br/>
 

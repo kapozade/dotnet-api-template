@@ -1,5 +1,40 @@
 # dotnet-api-template
 
+The generated project implements the Layered Architecture. Internal implementation uses CQRS principle to split query use cases from command use cases. 
+
+```
+Supreme.Api: Responsible for showing information to the user and interpreting the user's commands.
+Supreme.Application: Defines the jobs that the project is supposed to do and directs the expressive domain objects to work.
+Supreme.Domain: Responsible for representing concepts of the business, information about the the business situation and business rules.
+Supreme.Infrastructure: Provides generic technical capabilities that support the higher layers.
+```
+<i>PS: When you name your project Supreme will be replaced with the name of the project.</i>
+
+<br/>
+
+* DomainEvents, IntegrationEvents and outbox messaging can be used so as to have eventual consistency and strong consistency (requires enabled outbox pattern. Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
+
+* You can add distributed rate limiting per endpoints. If you enable rate limiting, you can find rate limit types under Supreme.Api/Filters/RateLimits folder. Concurrent, Fixed Window, Sliding Window, Token Bucket rate limits are implemented. Currently, adding requests to the queue when the limit has been reached not supported.
+
+```C#
+[FixedWindowRateLimitFilter(policyKey: "foo", limit: 5, expireInSeconds: 60)]
+[HttpGet("{id}", Name = "GetIndividualFoo")]
+[ProducesResponseType(typeof(GetFooResponse), StatusCodes.Status200OK)]
+public async Task<IActionResult> GetAsync([FromRoute] long id, 
+    CancellationToken cancellationToken)
+{
+    var query = FooMapper.MapFrom(id);
+    var result = await _mediator.Send(query, cancellationToken);
+    var response = FooMapper.MapFrom(result);
+
+    return StatusCode(StatusCodes.Status200OK, response);
+}
+```
+
+* You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
+
+<br/>
+
 ## Content
 1. [Requirements](https://github.com/kapozade/dotnet-api-template#requirements)
 2. [How-to](https://github.com/kapozade/dotnet-api-template#how-to)
@@ -12,6 +47,7 @@
 ## Requirements
 The basic template depends on the below resources.
 
+* .NET7
 * MySQL
 * Redis
 
@@ -27,19 +63,19 @@ You can find the docker images for the above resources via [here](https://github
 
 First, install the template
 ```bash
-> dotnet new install Supreme.Dotnet.Api.Template
+dotnet new install Supreme.Dotnet.Api.Template
 ```
 
 Run
+
 ```bash
-> ## dotnet new supremeapi [options] [template options]
-> dotnet new supremeapi -n "MyService" -eop -eot -erl
+## dotnet new supremeapi [options] [template options]
+dotnet new supremeapi -n "MyService" -eop -eot -erl
 ```
 
 <br/>
 
 ## Template Options
-Options are stated below.
 
 | Option | Description |
 | ------ | ----------- |
