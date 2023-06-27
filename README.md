@@ -67,6 +67,8 @@ You can find docker images for above resources via [here](https://github.com/kap
 
 ## How-to
 
+### Installation
+
 First, install template
 ```bash
 dotnet new install Supreme.Dotnet.Api.Template
@@ -92,22 +94,27 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 
 <br/>
 
-## Version History
-* <b>1.1.0</b>
-
-    <b> 🎉 What is new?</b>
-
-    * Containerization support [#3](https://github.com/kapozade/dotnet-api-template/issues/3)
-    * Project README.md file generation improvements.
-    
-    <br/>
-
-   <b> 🐞 What is fixed?</b>
-
-   * appsettings.json template generation issue fixed. [#4](https://github.com/kapozade/dotnet-api-template/issues/4)
-<hr/>
-<br/>
-
 ## Contributors
 
 * Owner: [@kapozade](https://github.com/kapozade)
+
+<br/>
+
+## Third Party Libraries
+
+* Ardalis.Specification
+* EasyCaching
+* FluentValidation
+* DotNetCore.CAP
+* MediatR
+* OpenTelemetry
+* Pomelo.EntityFrameworkCore
+* Scrutor
+* Serilog
+* StackExchange.Redis
+
+<br/>
+
+## Credits
+
+* [Icon](https://github.com/kapozade/dotnet-api-template/blob/main/images/bricks.png) created by [Austin Andrews](https://github.com/Templarian) from  [pictogrammers.com](https://pictogrammers.com/library/mdi/icon/wall/)
