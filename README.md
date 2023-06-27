@@ -11,6 +11,9 @@
 ## Content
 1. [Requirements](https://github.com/kapozade/dotnet-api-template#requirements)
 2. [How-to](https://github.com/kapozade/dotnet-api-template#how-to)
+    
+    [Installation](https://github.com/kapozade/dotnet-api-template#installation)
+
 3. [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)
 4. [Version History](https://github.com/kapozade/dotnet-api-template#version-history)
 5. [Contributors](https://github.com/kapozade/dotnet-api-template#contributors)
@@ -112,6 +115,7 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 * Scrutor
 * Serilog
 * StackExchange.Redis
+* Swashbuckle
 
 <br/>
 
