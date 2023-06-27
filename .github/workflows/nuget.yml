@@ -18,7 +18,7 @@ jobs:
     - name: 'Checkout source'
       uses: actions/checkout@v2
 
-    - name: 'Install .NET Core 7 SDK'
+    - name: 'Install .NET 7 SDK'
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 7.0.x
@@ -37,4 +37,4 @@ jobs:
       run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release  --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
     - name: 'Publish NuGet Package'
-      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -s ${{ env.NUGET_SOURCE_URL }} --skip-duplicate -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\Supreme.Dotnet.Api.Template.${{ steps.version.outputs.version-without-v }}.nupkg -s ${{ env.NUGET_SOURCE_URL }} --skip-duplicate --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
