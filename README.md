@@ -1,4 +1,9 @@
+<img align="left" width="116" height="116" src="https://raw.githubusercontent.com/kapozade/dotnet-api-template/main/images/bricks.png" />
+
 # dotnet-api-template
+
+[![Build](https://github.com/kapozade/dotnet-api-template/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/kapozade/dotnet-api-template/actions/workflows/dotnet.yml)
+[![CodeQL](https://github.com/kapozade/dotnet-api-template/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/kapozade/dotnet-api-template/actions/workflows/codeql.yml)
 
 ## Content
 1. [Requirements](https://github.com/kapozade/dotnet-api-template#requirements)
