@@ -5,9 +5,9 @@ name: dotnet package
 
 on:
   push:
-    branches: [ "feature/build.yml" ]
+    branches: [ "main", "feature/**" ]
   pull_request:
-    branches: [ "feature/build.yml" ]
+    branches: [ "main" ]
 
 jobs:
   build:
