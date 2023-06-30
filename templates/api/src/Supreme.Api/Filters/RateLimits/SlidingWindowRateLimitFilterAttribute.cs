@@ -1,4 +1,3 @@
-using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Supreme.Infrastructure.RateLimiting.Core;
@@ -31,7 +30,7 @@ public sealed class SlidingWindowRateLimitFilterAttribute : ActionFilterAttribut
             Limit = _limit, 
             Period = TimeSpan.FromSeconds(_windowInSeconds),
             PolicyKey = _policyKey,
-            RequestId = NewId.NextGuid().ToString()
+            RequestId = Guid.NewGuid().ToString()
         };
         
         var rateLimitState = await rateLimit.GetCurrentLimitStateAsync(rateLimitOptions);
