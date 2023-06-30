@@ -18,7 +18,6 @@
 4. [Version History](https://github.com/kapozade/dotnet-api-template#version-history)
 5. [Contributors](https://github.com/kapozade/dotnet-api-template#contributors)
 
-<br/>
 The generated project implements Layered Architecture. Internal implementation uses CQRS principle to split query use cases from command use cases. 
 
 ```
@@ -28,8 +27,6 @@ Supreme.Domain: Responsible for representing concepts of business, information a
 Supreme.Infrastructure: Provides generic technical capabilities that support higher layers.
 ```
 <i>PS: When you name your project Supreme will be replaced with the name of project.</i>
-
-<br/>
 
 * DomainEvents, IntegrationEvents and outbox messaging can be used so as to have eventual consistency and strong consistency (requires enabled outbox pattern. Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
@@ -51,8 +48,6 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 
 * You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
-<br/>
-
 ## Requirements
 The basic template depends on below resources.
 
@@ -65,8 +60,6 @@ If you would like to add outbox pattern functionality, you are required to have
 * RabbitMQ
 
 You can find docker images for above resources via [here](https://github.com/kapozade/dockerfiles)
-
-<br/>
 
 ## How-to
 
@@ -84,8 +77,6 @@ Run
 dotnet new supremeapi -n "MyService" -eop -eot -erl
 ```
 
-<br/>
-
 ## Template Options
 
 | Option | Description |
@@ -95,13 +86,9 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 | -eot, --enable-open-telemetry | Adds open telemetry configuration with Jaeger support |
 | -erl, --enable-rate-limiting | Adds basic rate limiting action filters that uses Redis behind |
 
-<br/>
-
 ## Contributors
 
 * Owner: [@kapozade](https://github.com/kapozade)
-
-<br/>
 
 ## Third Party Libraries
 
@@ -116,8 +103,6 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 * Serilog
 * StackExchange.Redis
 * Swashbuckle
-
-<br/>
 
 ## Credits
 
