@@ -38,7 +38,6 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
-    <PackageReference Include="Dapper" />
     <PackageReference Include="EasyCaching.Bus.Redis" />
     <PackageReference Include="EasyCaching.HybridCache" />
     <PackageReference Include="EasyCaching.InMemory" />
