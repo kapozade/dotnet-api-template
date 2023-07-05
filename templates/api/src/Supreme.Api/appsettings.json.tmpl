@@ -24,6 +24,7 @@
       "WithThreadId"
     ]
   },
+  //#if (enable-outbox-pattern)
   "RabbitMqSettings": {
     "Host": "$RABBITMQ_HOST",
     "Port": $RABBITMQ_PORT,
@@ -31,6 +32,7 @@
     "Username": "$RABBITMQ_USERNAME",
     "Password": "$RABBITMQ_PASSWORD",
   },
+  //#endif
   "ApplicationSettings": {
   },
   "RedisSettings": {
@@ -40,7 +42,9 @@
     "User": "$REDIS_USER",
     "Password": "$REDIS_PASSWORD",
   },
+  //#if (enable-open-telemetry)
   "JaegerSettings": {
     "Url": "$JAEGER_HOST",
   }
+  //#endif
 }

@@ -9,6 +9,12 @@ services:
     depends_on:
       - redis
       - mysql
+//#if (enable-outbox-pattern)
+      - rabbitmq
+//#endif
+//#if (enable-open-telemetry)
+      - jaeger
+//#endif
 
   mysql:
     image: mysql:8.0
@@ -39,13 +45,16 @@ services:
     ports:
       - "6379:6379"
 
+//#if (enable-outbox-pattern)
   rabbitmq:
     container_name: rabbitmq
     image: heidiks/rabbitmq-delayed-message-exchange
     ports:
       - "15672:15672"
       - "5672:5672"
+//#endif
 
+//#if (enable-open-telemetry)
   jaeger:
     image: jaegertracing/all-in-one:latest
     container_name: jaeger
@@ -60,3 +69,4 @@ services:
       - "14268:14268"
     environment:
       - COLLECTOR_OTLP_ENABLED=true
+//#endif
