@@ -34,17 +34,21 @@ ENV DB_NAME=Supreme
 ENV DB_USER=sqlsa
 ENV DB_PASSWORD=SuperPass1
 ENV DB_CONNECTION_TIMEOUT=15
+//#if (enable-outbox-pattern)
 ENV RABBITMQ_HOST=rabbitmq
 ENV RABBITMQ_PORT=5672
 ENV RABBITMQ_VHOST=/
 ENV RABBITMQ_USERNAME=guest
 ENV RABBITMQ_PASSWORD=guest
+//#endif
 ENV REDIS_HOST=redis
 ENV REDIS_PORT=6379
 ENV REDIS_DBID=1
 ENV REDIS_USER=kapozade
 ENV REDIS_PASSWORD=7b0evpiTayUA9kw0VYLRyWzc0mxPChtU
+//#if (enable-open-telemetry)
 ENV JAEGER_HOST=http://jaeger:4317
+//#endif
 ENV ASPNETCORE_URLS=http://*:5000
 
 RUN envsubst < /app/appsettings.json.tmpl > /app/appsettings.json

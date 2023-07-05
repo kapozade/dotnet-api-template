@@ -48,6 +48,8 @@
     <PackageReference Include="MediatR" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
     <PackageReference Include="Scrutor" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+
   </ItemGroup>
   
 </Project>
