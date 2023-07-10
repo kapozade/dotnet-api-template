@@ -5,7 +5,9 @@
   "Serilog": {
     "MinimumLevel": "Information",
     "Override": {
+//#if (enable-outbox-pattern)
       "DotNetCore.CAP.Internal.SubscribeDispatcher": "None",
+//#endif
       "Microsoft": "Warning",
       "Microsoft.Hosting.Lifetime": "Information"
     },
@@ -24,15 +26,6 @@
       "WithThreadId"
     ]
   },
-  //#if (enable-outbox-pattern)
-  "RabbitMqSettings": {
-    "Host": "$RABBITMQ_HOST",
-    "Port": $RABBITMQ_PORT,
-    "VirtualHost": "$RABBITMQ_VHOST",
-    "Username": "$RABBITMQ_USERNAME",
-    "Password": "$RABBITMQ_PASSWORD",
-  },
-  //#endif
   "ApplicationSettings": {
   },
   "RedisSettings": {
@@ -42,9 +35,18 @@
     "User": "$REDIS_USER",
     "Password": "$REDIS_PASSWORD",
   },
-  //#if (enable-open-telemetry)
+//#if (enable-outbox-pattern)
+  "RabbitMqSettings": {
+    "Host": "$RABBITMQ_HOST",
+    "Port": $RABBITMQ_PORT,
+    "VirtualHost": "$RABBITMQ_VHOST",
+    "Username": "$RABBITMQ_USERNAME",
+    "Password": "$RABBITMQ_PASSWORD",
+  },
+//#endif
+//#if (enable-open-telemetry)
   "JaegerSettings": {
-    "Url": "$JAEGER_HOST",
+    "Url": "$JAEGER_HOST"
   }
-  //#endif
+//#endif
 }
