@@ -48,7 +48,7 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 
 * You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
-* You can define database option by selecting one of the choice. (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). Current options are PostgreSQL and MySQL. Default value is MySQL.
+* You can define database by selecting one of the available options. (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). Current options are PostgreSQL and MySQL. Default value is MySQL.
 
 ## Requirements
 The basic template depends on below resources.
@@ -87,7 +87,7 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl -db mysql
 | -eop, --enable-outbox-pattern | Enables outbox pattern by using [CAP](https://cap.dotnetcore.xyz/) |
 | -eot, --enable-open-telemetry | Adds open telemetry configuration with Jaeger support |
 | -erl, --enable-rate-limiting | Adds basic rate limiting action filters that uses Redis behind |
-| -db, --database | The target database. mysql and postgres are supported. Default value is mysql |
+| -db, --database | The target database. `mysql` and `postgres` are supported. Default value is mysql |
 
 ## Contributors
 
