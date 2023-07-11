@@ -1,5 +1,4 @@
 using Supreme.Domain.DomainEvents;
-using Supreme.Domain.Factories;
 using System.Collections.Concurrent;
 
 namespace Supreme.Domain.SeedWork;
@@ -23,7 +22,7 @@ public abstract class BaseEntity
     protected void SetModificationAudit(int executedBy, DateTime? executedOn = null)
     {
         ModifiedBy = executedBy;
-        ModifiedOn = executedOn ?? DateTimeFactory.Now();
+        ModifiedOn = executedOn ?? DateTime.UtcNow;
     }
 
     protected void AddEvent(IDomainEvent @event)

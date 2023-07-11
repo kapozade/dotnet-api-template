@@ -1,6 +1,5 @@
 using Supreme.Application.FooUseCases.Commands;
 using Supreme.Domain.Entities.Foo;
-using Supreme.Domain.Factories;
 using Supreme.Domain.Db;
 using MediatR;
 
@@ -19,7 +18,7 @@ internal sealed class CreateFooCommandHandler : IRequestHandler<CreateFooCommand
 
     public async Task<CreateFooCommandResult> Handle(CreateFooCommand request, CancellationToken cancellationToken)
     {
-        var foo = Foo.Create(request.Name, request.ExecutedBy, DateTimeFactory.Now());
+        var foo = Foo.Create(request.Name, request.ExecutedBy, DateTime.UtcNow);
         await _unitOfWork.FooRepository.AddAsync(foo, cancellationToken);
         await _unitOfWork.CommitChangesAsync(cancellationToken);
 

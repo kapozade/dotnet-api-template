@@ -17,10 +17,15 @@ public static class RepositoryContextInjections
                 var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
                 dbContextOptions.UseLoggerFactory(loggerFactory);
 #endif
-                
-                dbContextOptions
+#if (database == "mysql")
+                   dbContextOptions
                     .UseMySql(configuration.GetConnectionString("DatabaseConnection"),
                         ServerVersion.AutoDetect(configuration.GetConnectionString("DatabaseConnection")));
+#endif
+#if (database == "postgres")
+                   dbContextOptions
+                    .UseNpgsql(configuration.GetConnectionString("DatabaseConnection"));
+#endif
             }
         );
 

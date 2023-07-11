@@ -4,7 +4,7 @@
 
 * <b>.NET7</b>
 * <b>Redis</b>
-* <b>MySQL</b>
+* <b>MySQL or Postgres</b> (depending on your choice)
 * <b>Docker</b>
 
 ## How-to
@@ -27,7 +27,7 @@ Executing migrations and db update requires a working database. You can create a
 <br/>
 
 ```bash
-docker compose up -d mysql
+docker compose up -d database
 ````
 
 <i>Note: Before running below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
@@ -70,7 +70,7 @@ Before running the app, make sure that all dependencies are up & running.
 ```bash
 docker compose up -d rabbitmq # If you didn't enable outbox pattern, you can skip this command.
 docker compose up -d jaeger # If you didn't enable open telemetry, you can skip this command.
-docker compose up -d mysql # Skip this if you already run this for Step #2.
+docker compose up -d database # Skip this if you already run this for Step #2.
 docker compose up -d redis
 docker compose up -d app
 ```
