@@ -48,6 +48,8 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 
 * You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
+* You can define database option by selecting one of the choice. (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). Current options are PostgreSQL and MySQL. Default value is MySQL.
+
 ## Requirements
 The basic template depends on below resources.
 
