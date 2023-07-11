@@ -52,7 +52,7 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 The basic template depends on below resources.
 
 * .NET7
-* MySQL
+* MySQL or PostgreSQL (depending on your choice)
 * Redis
 
 If you would like to add outbox pattern functionality, you are required to have 
