@@ -48,11 +48,13 @@ public async Task<IActionResult> GetAsync([FromRoute] long id,
 
 * You can enable open telemetry (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). 
 
+* You can define database option by selecting one of the choice. (Check [Template Options](https://github.com/kapozade/dotnet-api-template#template-options)). Current options are PostgreSQL and MySQL. Default value is MySQL.
+
 ## Requirements
 The basic template depends on below resources.
 
 * .NET7
-* MySQL
+* MySQL or PostgreSQL (depending on your choice)
 * Redis
 
 If you would like to add outbox pattern functionality, you are required to have 
@@ -74,7 +76,7 @@ Run
 
 ```bash
 ## dotnet new supremeapi [options] [template options]
-dotnet new supremeapi -n "MyService" -eop -eot -erl
+dotnet new supremeapi -n "MyService" -eop -eot -erl -db mysql
 ```
 
 ## Template Options
@@ -85,6 +87,7 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 | -eop, --enable-outbox-pattern | Enables outbox pattern by using [CAP](https://cap.dotnetcore.xyz/) |
 | -eot, --enable-open-telemetry | Adds open telemetry configuration with Jaeger support |
 | -erl, --enable-rate-limiting | Adds basic rate limiting action filters that uses Redis behind |
+| -db, --database | The target database. mysql and postgres are supported. Default value is mysql |
 
 ## Contributors
 
@@ -95,8 +98,9 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl
 * Ardalis.Specification
 * EasyCaching
 * FluentValidation
-* DotNetCore.CAP
+* DotNetCore.CAP with RabbitMQ and MySQL or PostgreSQL (depending on your choice)
 * MediatR
+* Npgsql.EntityFrameworkCore.PostgreSQL
 * OpenTelemetry
 * Pomelo.EntityFrameworkCore
 * Scrutor

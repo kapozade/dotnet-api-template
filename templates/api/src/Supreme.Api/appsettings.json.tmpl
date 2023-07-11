@@ -1,6 +1,11 @@
 {
   "ConnectionStrings": {
+//#if (database == "mysql")
     "DatabaseConnection": "Server=$DB_SERVER;database=$DB_NAME;uid=$DB_USER;pwd=$DB_PASSWORD;Convert Zero Datetime=True;Connection Timeout=$DB_CONNECTION_TIMEOUT;"
+//#endif
+//#if (database == "postgres")
+    "DatabaseConnection": "User ID=$DB_USER;Password=$DB_PASSWORD;Server=$DB_SERVER;Port=5432;Database=$DB_NAME;Integrated Security=true;Pooling=true;Timeout=$DB_CONNECTION_TIMEOUT"
+//#endif
   },
   "Serilog": {
     "MinimumLevel": "Information",

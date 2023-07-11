@@ -5,7 +5,6 @@
     <TargetFramework>{TargetFramework}</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -13,11 +12,36 @@
     <ProjectReference Include="..\Supreme.Application\Supreme.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
+    <PackageReference Include="EasyCaching.Bus.Redis" />
+    <PackageReference Include="EasyCaching.HybridCache" />
+    <PackageReference Include="EasyCaching.InMemory" />
+    <PackageReference Include="EasyCaching.Redis" />
+    <PackageReference Include="EasyCaching.Serialization.Json" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Scrutor" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(database)' == 'mysql'">
+   <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(database)' == 'postgres'">
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+
   <ItemGroup Condition="$(enable-outbox-pattern)">
     <PackageReference Include="DotNetCore.CAP" />
     <PackageReference Include="DotNetCore.CAP.Dashboard" />
-    <PackageReference Include="DotNetCore.CAP.MySql" />
     <PackageReference Include="DotNetCore.CAP.RabbitMQ" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(database)' == 'mysql' And $(enable-outbox-pattern)">
+    <PackageReference Include="DotNetCore.CAP.MySql" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(database)' == 'postgres' And $(enable-outbox-pattern)">
+    <PackageReference Include="DotNetCore.CAP.PostgreSql" />
   </ItemGroup>
 
   <ItemGroup Condition="$(enable-open-telemetry)">
@@ -36,20 +60,4 @@
     <PackageReference Include="StackExchange.Redis" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
-    <PackageReference Include="EasyCaching.Bus.Redis" />
-    <PackageReference Include="EasyCaching.HybridCache" />
-    <PackageReference Include="EasyCaching.InMemory" />
-    <PackageReference Include="EasyCaching.Redis" />
-    <PackageReference Include="EasyCaching.Serialization.Json" />
-    <PackageReference Include="FluentValidation" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
-    <PackageReference Include="MediatR" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" />
-    <PackageReference Include="Scrutor" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
-
-  </ItemGroup>
-  
 </Project>

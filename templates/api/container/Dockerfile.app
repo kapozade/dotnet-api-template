@@ -29,7 +29,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV ASPNETCORE_ENVIRONMENT=staging
-ENV DB_SERVER=mysql
+ENV DB_SERVER=database
 ENV DB_NAME=Supreme
 ENV DB_USER=sqlsa
 ENV DB_PASSWORD=SuperPass1

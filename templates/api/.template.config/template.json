@@ -22,6 +22,16 @@
             "defaultValue": "net7.0",
             "replaces": "{TargetFramework}"
         },
+        "database": {
+          "type": "parameter",
+          "description": "The target database",
+          "datatype": "choice",
+          "choices": [
+            {"choice": "mysql", "displayName": "mysql"},
+            {"choice": "postgres", "displayName": "postgres"}
+          ],
+          "defaultValue": "mysql"
+        },
         "enable-outbox-pattern":{
             "type": "parameter",
             "description": "Enables outbox pattern with CAP.",
