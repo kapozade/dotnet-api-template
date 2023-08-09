@@ -5,7 +5,7 @@
 [![Build](https://github.com/kapozade/dotnet-api-template/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/kapozade/dotnet-api-template/actions/workflows/dotnet.yml)
 [![CodeQL](https://github.com/kapozade/dotnet-api-template/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/kapozade/dotnet-api-template/actions/workflows/codeql.yml)
 [![NuGet Package](https://img.shields.io/nuget/v/Supreme.Dotnet.Api.Template.svg)](https://www.nuget.org/packages/Supreme.Dotnet.Api.Template)
-[![Supreme.Dotnet.Api.Template NuGet Package Downloads](https://img.shields.io/nuget/dt/Supreme.Dotnet.Api.Template)](https://www.nuget.org/packages/Supreme.Dotnet.Api.Template)
+[![Supreme.Dotnet.Api.Template NuGet Package Downloads](https://img.shields.io/nuget/dt/Supreme.Dotnet.Api.Template?id=123)](https://www.nuget.org/packages/Supreme.Dotnet.Api.Template)
 
 
 ## Content
