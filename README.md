@@ -107,6 +107,7 @@ dotnet new supremeapi -n "MyService" -eop -eot -erl -db mysql
 * Serilog
 * StackExchange.Redis
 * Swashbuckle
+* Testcontainers
 
 ## Credits
 

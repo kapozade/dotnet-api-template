@@ -20,6 +20,12 @@ dotnet build Supreme.sln -c Release
 ```
 <br/>
 
+<b>Step 2: Run tests</b>
+
+```bash
+dotnet test
+```
+
 <b>Step 2: Executing EFCore Migrations & Database Update</b>
 
 Executing migrations and db update requires a working database. You can create a db instance by executing below command.

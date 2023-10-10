@@ -16,6 +16,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\src\Supreme.Application\Supreme.Application.csproj" />
+    <ProjectReference Include="..\Belinda.Api.Tests\Belinda.Api.Tests.csproj" />
   </ItemGroup>
     
 </Project>
