@@ -26,16 +26,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="templates\api\test\Supreme.Api.Tests\WebAppFactory.cs" />
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
     <None Include="README.md" Pack="true" PackagePath="" />
     <None Include="LICENSE" Pack="true" PackagePath="" />
     <None Include="images\bricks.png" Pack="true" PackagePath="\"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="templates\api\test\Supreme.Application.Tests\FooUseCasesTests\" />
   </ItemGroup>
 
 </Project>
