@@ -1,9 +1,10 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Supreme.Api.Tests;
 using Supreme.Infrastructure.Db;
 using Xunit;
 
-namespace Supreme.Api.Tests;
+namespace Supreme.Application.Tests;
 
 public abstract class BaseTestFixture : IClassFixture<WebAppFactory>
 {
