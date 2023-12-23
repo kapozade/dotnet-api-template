@@ -2,45 +2,46 @@
 
 ## Requirements
 
-* <b>.NET7</b>
-* <b>Redis</b>
-* <b>MySQL or Postgres</b> (depending on your choice)
-* <b>Docker</b>
+* .NET7
+* Redis
+* MySQL or Postgres (depending on your choice)
+* Docker
 
 ## How-to
 
 If you decide to generate database by DDLs manually, you can skip Step 1 and Step 2.
 
-<br/>
 
-<b>Step 1: Building the project</b>
+### Step 1: Building the project
 
 ```bash
 dotnet build Supreme.sln -c Release
 ```
-<br/>
 
-<b>Step 2: Run tests</b>
+### Step 2: Run tests
+Tests contains both unit and integration. Integration tests are being handled by Testcontainers by default. Currently, below containers are registered as default.
+
+* MySQL or Postgres (depending on your db choice)
+* RabbitMQ (depending on your outbox pattern choice)
+
+To execute tests run below command.
 
 ```bash
 dotnet test
 ```
 
-<b>Step 2: Executing EFCore Migrations & Database Update</b>
+### Step 3: Executing EFCore Migrations & Database Update
 
 Executing migrations and db update requires a working database. You can create a db instance by executing below command.
-
-<br/>
 
 ```bash
 docker compose up -d database
 ````
 
-<i>Note: Before running below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally. <br/>
+Note: Before running below commands, be aware that those commands require `dotnet-ef` that should have already been installed globally.
 
 To install globally run this command => ```dotnet tool install --global dotnet-ef``` </i>
 
-<br/>
 
 Change directory to Supreme.Infrastructure project folder. You should wait a few seconds until the database is up & running before running commands below. Having up & running database, you can run below migration generation and db update statements on your CLI.
 
@@ -53,23 +54,17 @@ dotnet ef migrations add InitialCreate -s "../Supreme.Api/" -o "Db/Migrations/"
 dotnet ef database update -s "../Supreme.Api"
 ```
 
-<br/>
-<b>Step 3: Building docker image</b>
+### Step 4: Building docker image
 
-<br/>
-<b>Go back to the solution folder before running below command.</b>
-
-<br/>
+Go back to the solution folder before running below command.
 
 ```bash
 docker build \
   --rm=false --file "./container/Dockerfile.app" -t app/supreme .
 ```
 
-<br/>
-<b>Step 4: Run dependencies and application</b>
+### Step 5: Run dependencies and application
 
-<br/>
 Run below statements one by one.
 Before running the app, make sure that all dependencies are up & running.
 

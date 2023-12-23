@@ -25,6 +25,9 @@ Supreme.Api: Responsible for showing information to user and interpreting user's
 Supreme.Application: Defines the jobs that project is supposed to do and directs expressive domain objects to work.
 Supreme.Domain: Responsible for representing concepts of business, information about business situation and business rules.
 Supreme.Infrastructure: Provides generic technical capabilities that support higher layers.
+Supreme.Api.Tests: Provides you to add unit tests for API layer. It's up to you to enable integration tests at this layer.
+Supreme.Application.Tests: Provides you to add both unit and integration tests for Application Layer. For integration tests currently TestContainers are being used. Depending on your choices, RabbitMQ, MySQL, PostgreSQL containers will be registered.
+Supreme.Infrastructure.Tests: Provides you to add unit tests for Infrastructure Layer. It's up to you to enable integration tests at this layer.
 ```
 <i>PS: When you name your project Supreme will be replaced with the name of project.</i>
 
