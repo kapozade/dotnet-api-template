@@ -90,7 +90,7 @@ public static class CompositionRoot
                     })
             );
 
-        serviceCollection.Configure<AspNetCoreInstrumentationOptions>(opt =>
+        serviceCollection.Configure<AspNetCoreTraceInstrumentationOptions>(opt =>
         {
             opt.RecordException = true;
         });
