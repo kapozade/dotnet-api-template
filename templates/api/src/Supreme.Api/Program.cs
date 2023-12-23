@@ -67,7 +67,7 @@ void App()
 
 List<Assembly> GetProjectAssemblies()
 {
-    var startupAssembly = typeof(ReadinessController).Assembly;
+    var startupAssembly = typeof(Program).Assembly;
     var list = new List<Assembly> { startupAssembly };
     list.AddRange(startupAssembly.GetReferencedAssemblies()
         .Where(x => !string.IsNullOrWhiteSpace(x.Name)
@@ -78,3 +78,5 @@ List<Assembly> GetProjectAssemblies()
 }
 
 App();
+
+public partial class Program { }

@@ -8,14 +8,25 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Moq" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Testcontainers" />
   </ItemGroup>
-  
+
+  <ItemGroup Condition="'$(database)' == 'postgres'">
+    <PackageReference Include="Testcontainers.PostgreSql" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(database)' == 'mysql'">
+    <PackageReference Include="Testcontainers.MySql" />
+  </ItemGroup>
+  <ItemGroup Condition="$(enable-outbox-pattern)">
+    <PackageReference Include="Testcontainers.RabbitMq"/>
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\Supreme.Api\Supreme.Api.csproj" />
   </ItemGroup>
-    
 </Project>
