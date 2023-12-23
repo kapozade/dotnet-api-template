@@ -22,6 +22,9 @@
   <ItemGroup Condition="'$(database)' == 'mysql'">
     <PackageReference Include="Testcontainers.MySql" />
   </ItemGroup>
+  <ItemGroup Condition="$(enable-outbox-pattern)">
+    <PackageReference Include="Testcontainers.RabbitMq"/>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Supreme.Api\Supreme.Api.csproj" />

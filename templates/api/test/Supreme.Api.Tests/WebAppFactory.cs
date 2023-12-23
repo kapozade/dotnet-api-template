@@ -10,6 +10,9 @@ using Testcontainers.MySql;
 #if (database == "postgres")
 using Testcontainers.PostgreSql;
 #endif
+#if (enable-outbox-pattern)
+using Testcontainers.RabbitMq;
+#endif
 using Supreme.Infrastructure.Db;
 using Xunit;
 
@@ -35,6 +38,15 @@ public sealed class WebAppFactory : WebApplicationFactory<Program>, IAsyncLifeti
         .WithUsername("sqlsa")
         .WithPassword("SuperPass1")
         .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5432))
+        .Build();
+#endif
+#if (enable-outbox-pattern)
+    private readonly RabbitMqContainer _rabbitMqContainer = new RabbitMqBuilder()
+        .WithImage("heidiks/rabbitmq-delayed-message-exchange")
+        .WithUsername("guest")
+        .WithPassword("guest")
+        .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5672))
+        .WithCleanUp(true)
         .Build();
 #endif
 
@@ -71,10 +83,16 @@ public sealed class WebAppFactory : WebApplicationFactory<Program>, IAsyncLifeti
     public async Task InitializeAsync()
     {
         await _dbContainer.StartAsync();
+#if (enable-outbox-pattern)
+        await _rabbitMqContainer.StopAsync();
+#endif 
     }
 
     public new async Task DisposeAsync()
     {
         await _dbContainer.StopAsync();
+#if (enable-outbox-pattern)
+        await _rabbitMqContainer.StopAsync();
+#endif 
     }
 }

@@ -45,6 +45,7 @@
     <PackageReference Update="DotNetCore.CAP" Version="7.2.2" />
     <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="7.2.2" />
     <PackageReference Update="DotNetCore.CAP.Dashboard" Version="7.2.2" />
+    <PackageReference Update="Testcontainers.RabbitMq" Version="3.6.0"/>
   </ItemGroup>
 
   <ItemGroup Condition="'$(database)' == 'mysql' And $(enable-outbox-pattern)">
