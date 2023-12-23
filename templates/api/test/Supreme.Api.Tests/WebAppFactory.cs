@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 #if (database == "mysql")
-using Testcontainers.PostgreSql;
+using Testcontainers.MySql;
 #endif
 #if (database == "postgres")
 using Testcontainers.PostgreSql;
