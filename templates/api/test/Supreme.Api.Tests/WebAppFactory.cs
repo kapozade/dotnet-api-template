@@ -4,7 +4,12 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+#if (database == "mysql")
 using Testcontainers.PostgreSql;
+#endif
+#if (database == "postgres")
+using Testcontainers.PostgreSql;
+#endif
 using Supreme.Infrastructure.Db;
 using Xunit;
 
@@ -12,6 +17,17 @@ namespace Supreme.Api.Tests;
 
 public sealed class WebAppFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
+#if (database == "mysql")
+    private readonly MySqlContainer _dbContainer = new MySqlBuilder()
+        .WithImage("mysql:8.0")
+        .WithCleanUp(true)
+        .WithDatabase("Belindax")
+        .WithUsername("sqlsa")
+        .WithPassword("SuperPass1")
+        .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(3306))
+        .Build();
+#endif
+#if (database == "postgres")
     private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder()
         .WithImage("postgres:latest")
         .WithCleanUp(true)
@@ -20,6 +36,7 @@ public sealed class WebAppFactory : WebApplicationFactory<Program>, IAsyncLifeti
         .WithPassword("SuperPass1")
         .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5432))
         .Build();
+#endif
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -31,9 +48,18 @@ public sealed class WebAppFactory : WebApplicationFactory<Program>, IAsyncLifeti
             if (dbContextDescriptor is not null)
                 services.Remove(dbContextDescriptor);
 
+#if (database == "mysql")
+            services.AddDbContextPool<BelindaxContext>(opt =>
+                {
+                    var connectionString = $"{_dbContainer.GetConnectionString()};IgnoreCommandTransaction=true";
+                    opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                }
+            );
+#endif
+#if (database == "postgres")
             services.AddDbContextPool<SupremeContext>(opt =>
                 opt.UseNpgsql(_dbContainer.GetConnectionString()));
-            
+#endif            
             var serviceProvider = services.BuildServiceProvider();
             using var scope = serviceProvider.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<SupremeContext>();
