@@ -19,9 +19,11 @@
   <ItemGroup Condition="'$(database)' == 'postgres'">
     <PackageReference Include="Testcontainers.PostgreSql" />
   </ItemGroup>
-  
+  <ItemGroup Condition="'$(database)' == 'mysql'">
+    <PackageReference Include="Testcontainers.MySql" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\Supreme.Api\Supreme.Api.csproj" />
   </ItemGroup>
-    
 </Project>
